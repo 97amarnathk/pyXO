@@ -1,9 +1,9 @@
 from game import Game
 from board import Board
-from agent import Player
+from agent import Player, MiniMaxAgent, AlphaBetaMiniMaxAgent
 
-p1 = Player()
-p2 = Player()
+p1 = MiniMaxAgent()
+p2 = AlphaBetaMiniMaxAgent()
 
 board = Board(3)
 game = Game(board, p1, p2)

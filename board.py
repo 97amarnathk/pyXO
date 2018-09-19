@@ -36,6 +36,9 @@ class Board:
         # diagonals
         if self.size == self.state.trace() or self.size == np.fliplr(self.state).trace():
             return 1
-        elif if -1*self.size == self.state.trace() or -1*self.size == np.fliplr(self.state).trace():
+        elif -1*self.size == self.state.trace() or -1*self.size == np.fliplr(self.state).trace():
             return -1
+        #draw
+        if np.abs(self.state).sum() == self.size* self.size:
+            return 0
         return None
