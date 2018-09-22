@@ -1,6 +1,5 @@
 import numpy as np
 from copy import deepcopy
-#import matplotlib.pyplot as plt
 
 class policy(object):
     def __init__(self):
@@ -10,7 +9,7 @@ class policy(object):
 class MCTSAgent:
     def turn(self, perspectiveState):
         size = perspectiveState.shape[0]
-        mcts = VanilaMCTS(n_iterations=1500, depth=15, exploration_constant=5, win_mark= size, game_board=perspectiveState)
+        mcts = VanilaMCTS(n_iterations=1500, depth=15, exploration_constant=1.414, win_mark= size, game_board=perspectiveState)
         best_action, best_q, depth = mcts.solve()
         #print("asdaa")
         #print(best_action)
@@ -22,7 +21,7 @@ class MCTSAgent:
         return y_index, x_index
 
 class VanilaMCTS(object):
-    def __init__(self, n_iterations=50, depth=15, exploration_constant=5.0, tree = None, win_mark=3, game_board=None, player='o'): # 'o'->1
+    def __init__(self, n_iterations=50, depth=15, exploration_constant=1.414, tree = None, win_mark=3, game_board=None, player='o'): # 'o'->1
         self.n_iterations = n_iterations
         self.depth = depth
         self.exploration_constant = exploration_constant
@@ -235,7 +234,7 @@ class VanilaMCTS(object):
         else:
             anybody_win = True
             if winner == 'x':
-                #print("in this condition")
+                # if opponent wins then make the parent win value to -infinity
                 self.tree[self.tree[child_node_id]['parent']]['w']= -100000000
 
         while not anybody_win:
@@ -268,7 +267,6 @@ class VanilaMCTS(object):
                     state[action] = 1
 
                 previous_player = current_player
-        # if opponent wins then make the parent win value to -infinity
 
         return winner
 
@@ -324,61 +322,4 @@ class VanilaMCTS(object):
                 best_q = q
                 best_action = a
 
-        # FOR DEBUGGING
-        '''
-        print('\n----------------------')
-        print(' [-] game board: ')
-        for row in self.tree[(0,)]['state']:
-            print (row)
-        print(' [-] person to play: ', self.tree[(0,)]['player'])
-        print('\n [-] best_action: %d' % best_action)
-        print(' best_q = %.2f' % (best_q))
-        print(' [-] searching depth = %d' % (depth_searched))
-        '''
-        # FOR DEBUGGING
-        """
-        fig = plt.figure(figsize=(5,5))
-        for a in action_candidates:
-            # print('a= ', a)
-            _node = self.tree[(0,)+(a,)]
-            _state = deepcopy(_node['state'])
-
-            _q = _node['q']
-            _action_onehot = np.zeros(len(_state)**2)
-            # _state[_action_onehot] = -1
-
-            # print('action = %d, q = %.3f' % (a, _q))
-            # print('state after action: ')
-            # for _row in _state:
-            #     print(_row)
-            plt.subplot(len(_state),len(_state),a+1)
-            plt.pcolormesh(_state, alpha=0.7, cmap="RdBu")
-            plt.axis('equal')
-            plt.gca().invert_yaxis()
-            plt.xticks([], [])
-            plt.yticks([], [])
-            plt.title('[%d] q=%.2f' % (a,_q))
-        plt.draw()
-        plt.waitforbuttonpress(0)
-        plt.close(fig)
-        """
-
-
         return best_action, best_q, depth_searched
-
-
-'''
-for test
-'''
-# if __name__ == '__main__':
-#     mcts = VanilaMCTS(n_iterations=100, depth=10, exploration_constant=1.4, tree = None, n_rows=3, win_mark=3)
-#     # leaf_node_id, depth = mcts.selection()
-#     # child_node_id = mcts.expansion(leaf_node_id)
-#     #
-#     # print('child node id = ', child_node_id)
-#     # print(' [*] simulation ...')
-#     # winner = mcts.simulation(child_node_id)
-#     # print(' winner', winner)
-#     # mcts.backprop(child_node_id, winner)
-#     best_action, max_q = mcts.solve()
-#     print('best action= ', best_action, ' max_q= ', max_q)
