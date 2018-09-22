@@ -62,7 +62,7 @@ class VanilaMCTS(object):
         '''
         leaf_node_found = False
         leaf_node_id = (0,) # root node id
-        print('-------- selection ----------')
+        #print('-------- selection ----------')
 
         while not leaf_node_found:
             node_id = leaf_node_id
