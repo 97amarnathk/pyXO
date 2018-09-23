@@ -2,6 +2,7 @@ from game import Game
 from board import Board
 from agent import Player, MiniMaxAgent, AlphaBetaMiniMaxAgent, RandomAgent
 from MCTS import MCTSAgent
+import numpy as np
 
 p1 = MiniMaxAgent()
 p2 = AlphaBetaMiniMaxAgent()
