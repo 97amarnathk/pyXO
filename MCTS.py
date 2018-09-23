@@ -90,6 +90,7 @@ class VanilaMCTS(object):
                     if n == 0:
                         n = 1e-4
                     exploitation_value = w / n
+                    #print(total_n, n)
                     exploration_value  = np.sqrt(np.log(total_n)/n)
                     uct_value = exploitation_value + self.exploration_constant * exploration_value
 
@@ -235,7 +236,7 @@ class VanilaMCTS(object):
             anybody_win = True
             if winner == 'x':
                 # if opponent wins then make the parent win value to -infinity
-                self.tree[self.tree[child_node_id]['parent']]['w']= -100000000
+                self.tree[self.tree[child_node_id]['parent']]['w']= -10000000
 
         while not anybody_win:
             winner = self._is_terminal(state)

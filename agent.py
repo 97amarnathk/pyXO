@@ -1,4 +1,5 @@
 import numpy as np
+import random
 
 class Player:
 
@@ -172,3 +173,16 @@ class AlphaBetaMiniMaxAgent:
                         bestC = j
 
         return bestR, bestC
+
+class RandomAgent:
+    def turn(self, perspectiveState):
+        r,c = perspectiveState.shape
+        selected = False
+        turnR, turnC = None, None
+        while not selected:
+            turnR = random.randint(0, r-1)
+            turnC = random.randint(0, c-1)
+            if perspectiveState[turnR, turnC] == 0:
+                selected = True
+
+        return turnR, turnC

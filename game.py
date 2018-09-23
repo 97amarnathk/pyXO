@@ -10,22 +10,25 @@ class Game:
         # reset the board to empty (0)
         self.board.reset()
         win = None
-        print("New game. {}x{} board.".format(self.board.size, self.board.size))
-        print(self.board)
+        if verbose:
+            print("New game. {}x{} board.".format(self.board.size, self.board.size))
+            print(self.board)
 
         currentPlayer = 1
 
         while win is None:
-            print("Player ", currentPlayer)
+            if verbose:
+                print("Player ", currentPlayer)
             perspectiveState = currentPlayer * self.board.state
             row, col = self.players[currentPlayer].turn(perspectiveState)
             self.board.set(row, col, currentPlayer)
-            print(self.board)
+            if verbose:
+                print(self.board)
             win = self.board.check_end()
             currentPlayer = -1 * currentPlayer
 
         if win==0:
             print("Draw")
         else:
-            print("Player {} wins".format(win))
+            print("Player {} wins: {}".format(win, type(self.players[win])))
         return win
