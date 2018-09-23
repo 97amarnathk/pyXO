@@ -30,5 +30,5 @@ class Game:
         if win==0:
             print("Draw")
         else:
-            print("Player {} wins: {}".format(win, type(self.players[win])))
+            print("Player {} wins: {}".format(win, (str(type(self.players[win])).split('.')[-1]).split('Agent')[0]))
         return win
