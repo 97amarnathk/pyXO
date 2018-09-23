@@ -73,6 +73,9 @@ class MiniMaxAgent:
         bestVal = -1000
         bestR, bestC = -1, -1
 
+        if np.sum(np.abs(perspectiveState)) == 0:
+            return 0, 0
+
         for i in range(r):
             for j in range(c):
                 if perspectiveState[i,j] == 0:
@@ -124,7 +127,7 @@ class AlphaBetaMiniMaxAgent:
             return 0
 
         if isMax:
-            best = -1000
+            best = -100000
             for i in range(perspectiveState.shape[0]):
                 for j in range(perspectiveState.shape[0]):
                     if perspectiveState[i,j]==0:
@@ -140,7 +143,7 @@ class AlphaBetaMiniMaxAgent:
             return alpha
 
         else:
-            best = 1000;
+            best = 100000
             for i in range(perspectiveState.shape[0]):
                 for j in range(perspectiveState.shape[0]):
                     if perspectiveState[i,j]==0:
@@ -159,6 +162,9 @@ class AlphaBetaMiniMaxAgent:
         r,c = perspectiveState.shape
         bestVal = -1000
         bestR, bestC = -1, -1
+
+        if np.sum(np.abs(perspectiveState)) == 0:
+            return 0, 0
 
         for i in range(r):
             for j in range(c):
