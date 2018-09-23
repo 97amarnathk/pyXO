@@ -66,8 +66,6 @@ class VanilaMCTS(object):
         while not leaf_node_found:
             node_id = leaf_node_id
             n_child = len(self.tree[node_id]['child'])
-            # print('n_child: ', n_child)
-
             if n_child == 0:
                 leaf_node_id = node_id
                 leaf_node_found = True
@@ -90,9 +88,10 @@ class VanilaMCTS(object):
                     if n == 0:
                         n = 1e-4
                     exploitation_value = w / n
-                    #print(total_n, n)
                     exploration_value  = np.sqrt(np.log(total_n)/n)
                     uct_value = exploitation_value + self.exploration_constant * exploration_value
+                    if n == 0:
+                        uct_value = 1e5
 
                     if uct_value > maximum_uct_value:
                         maximum_uct_value = uct_value
@@ -229,7 +228,9 @@ class VanilaMCTS(object):
         self.total_n += 1
         state = deepcopy(self.tree[child_node_id]['state'])
         previous_player = deepcopy(self.tree[child_node_id]['player'])
+        anybody_win = False
         winner = self._is_terminal(state)
+
         if winner is None:
             anybody_win = False
         else:
@@ -237,6 +238,9 @@ class VanilaMCTS(object):
             if winner == 'x':
                 # if opponent wins then make the parent win value to -infinity
                 self.tree[self.tree[child_node_id]['parent']]['w']= -10000000
+            if winner == 'o':
+                # if agent wins then make the parent win value to infinity
+                self.tree[self.tree[child_node_id]['parent']]['w']= 10000000
 
         while not anybody_win:
             winner = self._is_terminal(state)
