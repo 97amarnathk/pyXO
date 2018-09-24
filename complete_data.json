@@ -1,0 +1,186 @@
+{
+    "RandomAgent": {
+        "RandomAgent": {
+            "agent1": [
+                1.0,
+                2.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 0
+        },
+        "MiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                1.0,
+                2.0
+            ],
+            "draw": 0
+        },
+        "AlphaBetaMiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                1.0,
+                2.0
+            ],
+            "draw": 0
+        },
+        "MCTSAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                1.0,
+                2.0
+            ],
+            "draw": 0
+        }
+    },
+    "MiniMaxAgent": {
+        "RandomAgent": {
+            "agent1": [
+                1.0,
+                2.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 0
+        },
+        "MiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 2
+        },
+        "AlphaBetaMiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 2
+        },
+        "MCTSAgent": {
+            "agent1": [
+                0.0,
+                1.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 1
+        }
+    },
+    "AlphaBetaMiniMaxAgent": {
+        "RandomAgent": {
+            "agent1": [
+                1.0,
+                2.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 0
+        },
+        "MiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 2
+        },
+        "AlphaBetaMiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 2
+        },
+        "MCTSAgent": {
+            "agent1": [
+                1.0,
+                2.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 0
+        }
+    },
+    "MCTSAgent": {
+        "RandomAgent": {
+            "agent1": [
+                1.0,
+                2.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 0
+        },
+        "MiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 2
+        },
+        "AlphaBetaMiniMaxAgent": {
+            "agent1": [
+                0.0,
+                0.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 2
+        },
+        "MCTSAgent": {
+            "agent1": [
+                1.0,
+                2.0
+            ],
+            "agent2": [
+                0.0,
+                0.0
+            ],
+            "draw": 0
+        }
+    }
+}

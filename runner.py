@@ -20,7 +20,7 @@ runs = 100
 for agent1 in list(agents.keys()):
     log[agent1] = {}
     for agent2 in list(agents.keys()):
-        wins = {'agent1': [], 'agent2': [], 'draw': 0}
+        wins = {'agent1': np.zeros(runs), 'agent2': np.zeros(runs), 'draw': 0}
         print()
         print("-"*(len(agent1+agent2)+4))
         print("{} vs {}".format(agent1, agent2))
@@ -32,11 +32,15 @@ for agent1 in list(agents.keys()):
             game = Game(board, p1, p2)
             winner = game.start(verbose = False)
             if winner == 1:
-                wins['agent1'].append(np.sum(wins['agent1'])+1)
+                wins['agent1'][run] = wins['agent1'][run-1]+1
+                wins['agent2'][run] = wins['agent2'][run-1]
             elif winner == -1:
-                wins['agent2'].append(np.sum(wins['agent2'])+1)
+                wins['agent1'][run] = wins['agent1'][run-1]
+                wins['agent2'][run] = wins['agent2'][run-1]+1
             else:
                 wins['draw'] += 1
+        wins['agent1'] = wins['agent1'].tolist()
+        wins['agent2'] = wins['agent2'].tolist()
         log[agent1][agent2] = wins
 
 with open('./complete_data.json', 'w') as f:
