@@ -49,6 +49,6 @@ for agent1 in list(agents.keys()):
         wins['draw'] = wins['draw'].tolist()
         log[agent1][agent2] = wins
 
-with open('./complete_data.json', 'w') as f:
+with open('./complete_data_2.json', 'w') as f:
     json.dump(log, f, indent = 4)
 # plt.plot(winner['RandomAgent']['RandomAgent'])
