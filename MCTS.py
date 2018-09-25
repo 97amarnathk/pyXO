@@ -131,11 +131,12 @@ class VanilaMCTS(object):
 
         if winner is None:
             anybody_win = False
-        else:
+        elif winner is not "draw":
             anybody_win = True
             if winner != self.tree[leaf_node_id]['player']:
                 # if opponent wins then make the parent win value to -infinity
                 self.tree[self.tree[child_node_id]['parent']]['w'] = -100000
+                # print(self.tree[self.tree[child_node_id]['parent']])
             if winner == self.tree[leaf_node_id]['player']:
                 # if agent wins then make the parent win value to infinity
                 self.tree[self.tree[child_node_id]['parent']]['w'] = 100000
@@ -261,10 +262,10 @@ class VanilaMCTS(object):
         #     anybody_win = True
         #     if winner != previous_player:
         #         # if opponent wins then make the parent win value to -infinity
-        #         self.tree[self.tree[child_node_id]['parent']]['w'] = -100000
+        #         self.tree[self.tree[child_node_id]['parent']]['w'] += -100000
         #     if winner == previous_player:
         #         # if agent wins then make the parent win value to infinity
-        #         self.tree[self.tree[child_node_id]['parent']]['w'] = 100000
+        #         self.tree[self.tree[child_node_id]['parent']]['w'] += 100000
 
         while not anybody_win:
             winner = self._is_terminal(state)
