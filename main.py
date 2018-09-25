@@ -7,6 +7,7 @@ from pygame.locals import *
 from board import Board
 from agent import MiniMaxAgent
 from MCTS import MCTSAgent
+<<<<<<< Updated upstream
 
 title = 'Tic Tac Toe'
 
@@ -158,3 +159,21 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+# =======
+# import numpy as np
+#
+# p1 = MiniMaxAgent()
+# p2 = AlphaBetaMiniMaxAgent()
+# p3 = MCTSAgent()
+# p4 = Player()
+# p5 = RandomAgent()
+#
+# board = Board(3)
+# game = Game(board, p4, p3)
+# game.start(verbose = True)
+# # p3.turn(np.array([[0,-1,-1],[0,1,0],[1,0,-1]]))
+# # p3.turn(np.array([[0,0,-1],[-1,1,0],[0,-1,1]]))
+# # p3.turn(np.array([[-1,-1,0],[-1,1,0],[0,0,1]]))
+# # p3.turn(np.array([[0,-1,-1],[0,1,0],[1,0,1]]))
+# >>>>>>> Stashed changes

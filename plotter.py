@@ -2,32 +2,31 @@ import matplotlib.pyplot as plt
 import json
 import numpy as np
 
-with open('complete_data.json', 'r') as f:
+with open('complete_data_2.json', 'r') as f:
     log = json.load(f)
 
-# for i, agent1 in enumerate(list(log.keys())):
-#     for j, agent2 in enumerate(list(log.keys())):
-#         plt.plot(np.array(log[agent1][agent2]['agent1'])/(np.arange(len(log[agent1][agent2]['agent1']))+1), label="1. "+agent1)
-#         plt.plot(np.array(log[agent1][agent2]['agent2'])/(np.arange(len(log[agent1][agent2]['agent2']))+1), label="2. "+agent2)
-#         plt.plot(np.array(log[agent1][agent2]['draw'])/(np.arange(len(log[agent1][agent2]['draw']))+1), label='draw')
-#         plt.grid()
-#         plt.legend()
-#         plt.ylabel(r"Ration of outcome (outcome/ total games)")
-#         plt.xlabel(r"Games")
-#         plt.savefig("./plots/prob/{}_{}_{}_{}.png".format(i, j, agent1, agent2), dpi=350)
-#         plt.close()
-#
-# for i, agent1 in enumerate(list(log.keys())):
-#     for j, agent2 in enumerate(list(log.keys())):
-#         plt.plot(np.array(log[agent1][agent2]['agent1']), label="1. "+agent1)
-#         plt.plot(np.array(log[agent1][agent2]['agent2']), label="2. "+agent2)
-#         plt.plot(np.array(log[agent1][agent2]['draw']), label='draw')
-#         plt.grid()
-#         plt.legend()
-#         plt.ylabel(r"Number of outcomes")
-#         plt.xlabel(r"Games")
-#         plt.savefig("./plots/runs/{}_{}_{}_{}.png".format(i, j, agent1, agent2), dpi=350)
-#         plt.close()
+for i, agent1 in enumerate(list(log.keys())):
+    for j, agent2 in enumerate(list(log.keys())):
+        plt.plot(np.array(log[agent1][agent2]['agent1'])/(np.arange(len(log[agent1][agent2]['agent1']))+1), label="1. "+agent1)
+        plt.plot(np.array(log[agent1][agent2]['agent2'])/(np.arange(len(log[agent1][agent2]['agent2']))+1), label="2. "+agent2)
+        plt.plot(np.array(log[agent1][agent2]['draw'])/(np.arange(len(log[agent1][agent2]['draw']))+1), label='draw')
+        plt.grid()
+        plt.legend()
+        plt.ylabel(r"Ration of outcome (outcome/ total games)")
+        plt.xlabel(r"Games")
+        plt.savefig("./plots2/ratio/{}_{}_{}_{}.png".format(i, j, agent1, agent2), dpi=350)
+        plt.close()
+for i, agent1 in enumerate(list(log.keys())):
+    for j, agent2 in enumerate(list(log.keys())):
+        plt.plot(np.array(log[agent1][agent2]['agent1']), label="1. "+agent1)
+        plt.plot(np.array(log[agent1][agent2]['agent2']), label="2. "+agent2)
+        plt.plot(np.array(log[agent1][agent2]['draw']), label='draw')
+        plt.grid()
+        plt.legend()
+        plt.ylabel(r"Number of outcomes")
+        plt.xlabel(r"Games")
+        plt.savefig("./plots2/runs/{}_{}_{}_{}.png".format(i, j, agent1, agent2), dpi=350)
+        plt.close()
 
 # plt.bar(np.arange(len(hist_list)), hist_list, width=0.35, zorder = 3)
 # plt.xticks(np.arange(len(hist_names)), hist_names)
@@ -77,7 +76,7 @@ for r1, r2, r3 in zip(p1, p2, p3):
     if h3 != 0:
         plt.text(r3.get_x() + r3.get_width() / 2., h1 + h2 + h3/ 3., "%d" % h3, ha="center", va="center", color="white", fontsize=8, fontweight="bold")
 
-plt.savefig("./plots/stackplot_minimax_second.png", dpi=350)
+plt.savefig("./plots2/stackplot_minimax_second.png", dpi=350)
 plt.close()
 
 ''' Stacked bar graph if MiniMax plays first '''
@@ -120,5 +119,5 @@ for r1, r2, r3 in zip(p1, p2, p3):
     if h3 != 0:
         plt.text(r3.get_x() + r3.get_width() / 2., h1 + h2 + h3/ 3., "%d" % h3, ha="center", va="center", color="white", fontsize=8, fontweight="bold")
 
-plt.savefig("./plots/stackplot_minimax_first.png", dpi=350)
+plt.savefig("./plots2/stackplot_minimax_first.png", dpi=350)
 plt.show()
