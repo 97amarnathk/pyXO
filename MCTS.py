@@ -127,6 +127,20 @@ class VanilaMCTS(object):
         possible_actions = self._get_valid_actions(leaf_state)
 
         child_node_id = leaf_node_id # default value
+        anybody_win = False
+
+        if winner is None:
+            anybody_win = False
+        else:
+            anybody_win = True
+            if winner != self.tree[leaf_node_id]['player']:
+                # if opponent wins then make the parent win value to -infinity
+                self.tree[self.tree[child_node_id]['parent']]['w'] = -100000
+            if winner == self.tree[leaf_node_id]['player']:
+                # if agent wins then make the parent win value to infinity
+                self.tree[self.tree[child_node_id]['parent']]['w'] = 100000
+
+
         if winner is None:
             '''
             when leaf state is not terminal state
@@ -241,16 +255,16 @@ class VanilaMCTS(object):
         anybody_win = False
         winner = self._is_terminal(state)
 
-        if winner is None:
-            anybody_win = False
-        else:
-            anybody_win = True
-            if winner != previous_player:
-                # if opponent wins then make the parent win value to -infinity
-                self.tree[self.tree[child_node_id]['parent']]['w'] = -100000
-            if winner == previous_player:
-                # if agent wins then make the parent win value to infinity
-                self.tree[self.tree[child_node_id]['parent']]['w'] = 100000
+        # if winner is None:
+        #     anybody_win = False
+        # else:
+        #     anybody_win = True
+        #     if winner != previous_player:
+        #         # if opponent wins then make the parent win value to -infinity
+        #         self.tree[self.tree[child_node_id]['parent']]['w'] = -100000
+        #     if winner == previous_player:
+        #         # if agent wins then make the parent win value to infinity
+        #         self.tree[self.tree[child_node_id]['parent']]['w'] = 100000
 
         while not anybody_win:
             winner = self._is_terminal(state)
