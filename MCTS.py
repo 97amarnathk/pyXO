@@ -9,6 +9,15 @@ class policy(object):
 class MCTSAgent:
     def turn(self, perspectiveState):
         size = perspectiveState.shape[0]
+        # first move hard coded.
+        if np.sum(np.abs(perspectiveState))==0:
+            return 0,0
+        if np.sum(np.abs(perspectiveState))==1:
+            if perspectiveState[size//2][size//2] == 0:
+                return size//2, size//2
+            else:
+                return 0,0
+
         mcts = VanilaMCTS(n_iterations=1500, depth=15, exploration_constant=1.414, win_mark= size, game_board=perspectiveState)
         best_action, best_q, depth = mcts.solve()
         #print("asdaa")
@@ -70,7 +79,7 @@ class VanilaMCTS(object):
                 leaf_node_id = node_id
                 leaf_node_found = True
             else:
-                maximum_uct_value = -1000000000.0
+                maximum_uct_value = -100000000000.0
                 for i in range(n_child):
                     action = self.tree[node_id]['child'][i]
 
@@ -236,12 +245,12 @@ class VanilaMCTS(object):
             anybody_win = False
         else:
             anybody_win = True
-            if winner == 'x':
+            if winner != previous_player:
                 # if opponent wins then make the parent win value to -infinity
-                self.tree[self.tree[child_node_id]['parent']]['w']= -100000
-            if winner == 'o':
+                self.tree[self.tree[child_node_id]['parent']]['w'] = -100000
+            if winner == previous_player:
                 # if agent wins then make the parent win value to infinity
-                self.tree[child_node_id]['w']= 100000
+                self.tree[self.tree[child_node_id]['parent']]['w'] = 100000
 
         while not anybody_win:
             winner = self._is_terminal(state)
@@ -321,7 +330,7 @@ class VanilaMCTS(object):
         current_state_node_id = (0,)
         action_candidates = self.tree[current_state_node_id]['child']
         # qs = [self.tree[(0,)+(a,)]['q'] for a in action_candidates]
-        best_q = -100
+        best_q = -100000000
         for a in action_candidates:
             q = self.tree[(0,)+(a,)]['q']
             if q > best_q:
