@@ -26,4 +26,4 @@ To change the type of agent, go to `main.py` and change the type of agent to the
 
 
 To change the size of the board to NxN, change the argument passed in the initialization of an object of class `Board` on line 23 of `main.py` to N. For example, to play a game on a 5x5 board, change:
-        `board = Board(3)`  -->  `board = Board(5)`
+        ```board = Board(3)  to  board = Board(5)```
