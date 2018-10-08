@@ -5,9 +5,8 @@ import colors
 from pygame.locals import *
 
 from board import Board
-from agent import MiniMaxAgent
+from agent import MiniMaxAgent, AlphaBetaMiniMaxAgent, RandomAgent
 from MCTS import MCTSAgent
-<<<<<<< Updated upstream
 
 title = 'Tic Tac Toe'
 
@@ -160,7 +159,8 @@ def main():
 if __name__ == '__main__':
     main()
 
-# =======
+
+# ========= To Use it as a Console game ==========
 # import numpy as np
 #
 # p1 = MiniMaxAgent()
@@ -176,4 +176,3 @@ if __name__ == '__main__':
 # # p3.turn(np.array([[0,0,-1],[-1,1,0],[0,-1,1]]))
 # # p3.turn(np.array([[-1,-1,0],[-1,1,0],[0,0,1]]))
 # # p3.turn(np.array([[0,-1,-1],[0,1,0],[1,0,1]]))
-# >>>>>>> Stashed changes
