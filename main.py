@@ -1,6 +1,6 @@
 import sys
 import pygame
-import colors
+from utilities import colors
 
 from pygame.locals import *
 
@@ -153,7 +153,7 @@ def startGame(DISPLAYSURF, myfont):
 
 def main():
     DISPLAYSURF = init()
-    myfont = pygame.font.Font('fonts/font.ttf', 20)
+    myfont = pygame.font.Font('utilities/font.ttf', 20)
     startGame(DISPLAYSURF, myfont)
 
 if __name__ == '__main__':
